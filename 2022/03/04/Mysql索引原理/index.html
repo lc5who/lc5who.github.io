@@ -9,7 +9,7 @@
     
     <title>
         
-            归档 |
+            Mysql索引原理 |
         
         Lcc&#39;s blog
     </title>
@@ -67,7 +67,7 @@
                         </li>
                     
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/archives"
                             >
                                 归档
@@ -103,7 +103,7 @@
                 </li>
             
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
+                    <a class=""
                        href="/archives">归档</a>
                 </li>
             
@@ -128,38 +128,114 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="archive-container ">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Mysql索引原理</span>
+        </div>
+
         
-<div class="archive-list-container">
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Lcc</span>
+                        
+                            <span class="author-label">Lv1</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-03-04 10:57:53</span>
+        <span class="mobile">2022-03-04 10:57</span>
+    </span>
     
-        <section class="archive-item">
-            <div class="archive-item-header">
-                <span class="archive-year">2022</span>
-                <span class="archive-year-post-count">[2]</span>
-            </div>
-            <ul class="article-list">
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
                 
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2022/03/04/Mysql%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86/"
-                        >Mysql索引原理</a>
-                        <span class="article-date">03-04</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2022/03/04/hello-world/"
-                        >Hello World</a>
-                        <span class="article-date">03-04</span>
+                    <li>
+                        <a href="/tags/mysql/">mysql</a>&nbsp;
                     </li>
                 
             </ul>
-        </section>
+        </span>
+    
+
+    
+    
+    
     
 </div>
 
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><h2 id="索引的底层数据"><a href="#索引的底层数据" class="headerlink" title="索引的底层数据"></a>索引的底层数据</h2><p>索引采用B+树的数据结构.</p>
+<ul>
+<li>B+树中只有叶子节点会带有指向记录的指针（ROWID），而B树则所有节点都带有，在内部节点出现的索引项不会再出现在叶子节点中。</li>
+<li>B+树中所有叶子节点都是通过指针连接在一起，而B树不会。</li>
+</ul>
+<h2 id="组合索引的最左前缀说明"><a href="#组合索引的最左前缀说明" class="headerlink" title="组合索引的最左前缀说明"></a>组合索引的最左前缀说明</h2><p>查询中必须使用 组合索引包含的第一个字段，且 where语句中第一个查询条件必须使用第一个字段  即最左边的字段<br> 例如组合索引（a,b,c），组合索引的生效原则是<br>从前往后依次使用生效，如果中间某个索引没有使用，那么断点前面的索引部分起作用，断点后面的索引没有起作用；<br>即： a,b,c,d组合索引，其实生成了4个索引，a,ab,abc  abcd 中间断了 如where ab=xx and d=xx 则走的是ab这个索引</p>
+<h2 id="索引不生效的几种情况"><a href="#索引不生效的几种情况" class="headerlink" title="索引不生效的几种情况"></a>索引不生效的几种情况</h2><ol>
+<li>索引列参与计算，不走索引！</li>
+<li>索引列使用了函数，不走索引！</li>
+<li>索引列使用了Like %XXX，不走索引！</li>
+<li>隐式转换——字符串列与数字直接比较，不走索引！</li>
+<li>尽量避免 OR 操作，只要有一个字段没有索引，改语句就不走索引，不走索引！</li>
+<li>where id !=2 或者 where id &lt;&gt; 2，不走索引！</li>
+<li>is null，is not null也无法使用索引，不走索引！</li>
+<li>组合索引未遵循最左前缀不走索引</li>
+</ol>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/mysql/">#mysql</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/03/04/hello-world/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Hello World</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
     </div>
 </div>
+
 
                 
             </div>
@@ -189,6 +265,19 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-bottom-side-tools">
