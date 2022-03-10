@@ -9,7 +9,7 @@
     
     <title>
         
-            git解决 ssl_read ,ssl的问题 |
+            go微服务一 |
         
         Lcc&#39;s blog
     </title>
@@ -131,7 +131,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">git解决 ssl_read ,ssl的问题</span>
+            <span class="title-hover-animation">go微服务一</span>
         </div>
 
         
@@ -150,8 +150,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-03-04 17:27:57</span>
-        <span class="mobile">2022-03-04 17:27</span>
+        <span class="pc">2022-03-04 23:54:10</span>
+        <span class="mobile">2022-03-04 23:54</span>
     </span>
     
     
@@ -160,7 +160,11 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/git/">git</a>&nbsp;
+                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/go/">go</a>&nbsp;
                     </li>
                 
             </ul>
@@ -179,9 +183,26 @@
         
 
         <div class="article-content markdown-body">
-            <h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>记录一下<br>之前尝试过各种 unset http.proxy 等一系列，最后发现还是这个管用</p>
-<p><code>git config http.postBuffer 524288000</code></p>
-<p><code>git config http.sslVerify &quot;false&quot;</code></p>
+            <h1 id="Go使用Protobuf"><a href="#Go使用Protobuf" class="headerlink" title="Go使用Protobuf"></a>Go使用Protobuf</h1><hr>
+<h2 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h2><h3 id="安装protobuf编译器"><a href="#安装protobuf编译器" class="headerlink" title="安装protobuf编译器"></a>安装protobuf编译器</h3><h2 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h2><h3 id="配置环境变量或将编译器拷贝置环境变量中某个文件夹"><a href="#配置环境变量或将编译器拷贝置环境变量中某个文件夹" class="headerlink" title="配置环境变量或将编译器拷贝置环境变量中某个文件夹"></a>配置环境变量或将编译器拷贝置环境变量中某个文件夹</h3><h2 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h2><h3 id="安装Go的protobuf的包"><a href="#安装Go的protobuf的包" class="headerlink" title="安装Go的protobuf的包"></a>安装Go的protobuf的包</h3><blockquote>
+<p>这一步记得把下载下来的proto-gen-go.exe目录也就是gopath添加到环境变量否则会生成失败</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>生成命令</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">protoc --go_out=. test.proto</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法:"></a>基本用法:</h2><ul>
+<li>protobuf 文件格式为 <strong>.proto</strong> 后缀</li>
+<li>消息的定义:<ul>
+<li>required:必须包含</li>
+<li>optional:可选</li>
+<li>repeated: 可重复，可为0次<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">syntax=<span class="string">&quot;proto2&quot;</span>;</span><br><span class="line"><span class="keyword">option</span> go_package = <span class="string">&quot;./order/;order&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">message </span><span class="title class_">Order</span>&#123;</span><br><span class="line">  <span class="keyword">required</span> <span class="type">int32</span> orderId = <span class="number">1</span>;<span class="comment">//1代表字段顺序</span></span><br><span class="line">  <span class="keyword">required</span> <span class="type">int32</span> num = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">required</span> <span class="type">string</span> ts = <span class="number">3</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="序列化与反序列化"><a href="#序列化与反序列化" class="headerlink" title="序列化与反序列化"></a>序列化与反序列化</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">   msg_order := &amp;order.Order&#123;</span><br><span class="line">	OrderId: proto.Int32(<span class="number">1</span>),</span><br><span class="line">	Num:     proto.Int32(<span class="number">2</span>),</span><br><span class="line">	Ts:      proto.String(<span class="string">&quot;111&quot;</span>),</span><br><span class="line">&#125;</span><br><span class="line">msgData,err := proto.Marshal(msg_order)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">	<span class="built_in">panic</span>(err)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line">fmt.Println(msgData)</span><br><span class="line">msg :=order.Order&#123;&#125;</span><br><span class="line">err = proto.Unmarshal(msgData,&amp;msg)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">	<span class="built_in">panic</span>(err)</span><br><span class="line">	os.Exit(<span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line">fmt.Println(msg.GetOrderId())</span><br><span class="line">fmt.Println(msg.GetNum())</span><br><span class="line">fmt.Println(msg.GetTs())</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
 
         </div>
 
@@ -191,7 +212,11 @@
             <ul class="post-tags-box">
                 
                     <li class="tag-item">
-                        <a href="/tags/git/">#git</a>&nbsp;
+                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">#微服务</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/go/">#go</a>&nbsp;
                     </li>
                 
             </ul>
@@ -203,13 +228,13 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2022/03/04/go%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%80/"
+                           href="/2022/03/05/go%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B9%8Bconsul/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">go微服务一</span>
+                                <span class="post-nav-title-item">docker搭建consul多节点</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                         </a>
@@ -219,10 +244,10 @@
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/03/04/Mysql%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86/"
+                           href="/2022/03/04/aborted/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Mysql索引原理</span>
+                                <span class="post-nav-title-item">git解决 ssl_read ,ssl的问题</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
