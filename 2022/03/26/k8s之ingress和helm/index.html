@@ -9,7 +9,7 @@
     
     <title>
         
-            Hello World |
+            k8s之ingress和helm |
         
         Lcc&#39;s blog
     </title>
@@ -131,7 +131,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Hello World</span>
+            <span class="title-hover-animation">k8s之ingress和helm</span>
         </div>
 
         
@@ -150,10 +150,21 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-03-04 09:43:05</span>
-        <span class="mobile">2022-03-04 09:43</span>
+        <span class="pc">2022-03-26 17:02:25</span>
+        <span class="mobile">2022-03-26 17:02</span>
     </span>
     
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/k8s/">k8s</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
 
     
@@ -168,24 +179,34 @@
         
 
         <div class="article-content markdown-body">
-            <p>Welcome to <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/" >Hexo<i class="fas fa-external-link-alt"></i></a>! This is your very first post. Check <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/" >documentation<i class="fas fa-external-link-alt"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html" >troubleshooting<i class="fas fa-external-link-alt"></i></a> or you can ask me on <a class="link"   target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues" >GitHub<i class="fas fa-external-link-alt"></i></a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html" >Writing<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/server.html" >Server<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html" >Generating<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html" >Deployment<i class="fas fa-external-link-alt"></i></a></p>
+            <h2 id="ingress"><a href="#ingress" class="headerlink" title="ingress"></a>ingress</h2><p>简单说就是nginx将域名解析到具体的服务,也就是说在服务的上层</p>
+<h3 id="ingress-controller"><a href="#ingress-controller" class="headerlink" title="ingress controller"></a>ingress controller</h3><ol>
+<li>指定所有的解析规则</li>
+<li>管理指向</li>
+<li>集群的入口点</li>
+</ol>
+<p>安装ingress controller</p>
+<p><code> minikube addons enable ingress</code></p>
+<p>会自动开启k8s的nginx版本的ingress controller</p>
+<p>ingress默认后端 如:default-http-backend:80<br>可以用来自定义一些错误页面</p>
+<h1 id="Helm"><a href="#Helm" class="headerlink" title="Helm"></a>Helm</h1><h2 id="helm的作用"><a href="#helm的作用" class="headerlink" title="helm的作用"></a>helm的作用</h2><ol>
+<li>k8s的包管理器，helm charts 就是yaml文件 helm管理的包</li>
+<li>模板引擎，即将一些公共的变量如版本号，镜像版本号，使用helm登记，这样只需修改helm中的变量可以将yaml文件中所有登记的变量修改</li>
+<li>将同一程序部署在不同开发环境的集群</li>
+</ol>
 
         </div>
 
         
 
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/k8s/">#k8s</a>&nbsp;
+                    </li>
+                
+            </ul>
         
 
         
@@ -194,18 +215,33 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2022/03/04/Mysql%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86/"
+                           href="/2022/03/30/docker%E4%BD%BF%E7%94%A8%E4%B9%8B%E5%85%AB%E5%A4%A7%E6%83%AF%E4%BE%8B/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Mysql索引原理</span>
+                                <span class="post-nav-title-item">docker使用之八大惯例</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                         </a>
                     </div>
                 
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/03/26/k8s%E4%B9%8Bnamespace/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">k8s之namespace</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
                 
             </div>
         

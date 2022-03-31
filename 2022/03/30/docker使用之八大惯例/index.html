@@ -9,7 +9,7 @@
     
     <title>
         
-            Hello World |
+            docker使用之八大惯例 |
         
         Lcc&#39;s blog
     </title>
@@ -131,7 +131,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Hello World</span>
+            <span class="title-hover-animation">docker使用之八大惯例</span>
         </div>
 
         
@@ -150,10 +150,21 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-03-04 09:43:05</span>
-        <span class="mobile">2022-03-04 09:43</span>
+        <span class="pc">2022-03-30 22:37:01</span>
+        <span class="mobile">2022-03-30 22:37</span>
     </span>
     
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/docker/">docker</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
 
     
@@ -168,44 +179,61 @@
         
 
         <div class="article-content markdown-body">
-            <p>Welcome to <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/" >Hexo<i class="fas fa-external-link-alt"></i></a>! This is your very first post. Check <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/" >documentation<i class="fas fa-external-link-alt"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html" >troubleshooting<i class="fas fa-external-link-alt"></i></a> or you can ask me on <a class="link"   target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues" >GitHub<i class="fas fa-external-link-alt"></i></a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html" >Writing<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/server.html" >Server<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html" >Generating<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html" >Deployment<i class="fas fa-external-link-alt"></i></a></p>
-
+            <h1 id="docker使用之八大惯例手法"><a href="#docker使用之八大惯例手法" class="headerlink" title="docker使用之八大惯例手法"></a>docker使用之八大惯例手法</h1><h2 id="1-使用官方镜像作为基础镜像"><a href="#1-使用官方镜像作为基础镜像" class="headerlink" title="1. 使用官方镜像作为基础镜像"></a>1. 使用官方镜像作为基础镜像</h2><h2 id="2-指定镜像版本-如-FROM-node-17-0-1"><a href="#2-指定镜像版本-如-FROM-node-17-0-1" class="headerlink" title="2. 指定镜像版本 如: FROM node:17.0.1"></a>2. 指定镜像版本 如: FROM node:17.0.1</h2><h2 id="3-尽量使用体积较小的镜像如-FROM-node-17-0-1-alpine"><a href="#3-尽量使用体积较小的镜像如-FROM-node-17-0-1-alpine" class="headerlink" title="3. 尽量使用体积较小的镜像如: FROM node:17.0.1-alpine"></a>3. 尽量使用体积较小的镜像如: FROM node:17.0.1-alpine</h2><h2 id="4-优化缓存每一层命令生成的容器镜像"><a href="#4-优化缓存每一层命令生成的容器镜像" class="headerlink" title="4. 优化缓存每一层命令生成的容器镜像"></a>4. 优化缓存每一层命令生成的容器镜像</h2><p>bad案例:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FROM node:17.0.1-alpine //from cache</span><br><span class="line">WORKDIR /app    //from cache</span><br><span class="line">COPY myapp /app   //每一次改动代码就会更新镜像不使用缓存</span><br><span class="line">RUN npm install --production</span><br><span class="line">CMD[&#x27;node&#x27;,&#x27;src/index.js&#x27;]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>每当有一层的镜像改变，则接下来的layer都需要重新生成,即不走缓存</p>
+</blockquote>
+<p>优化后:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">FROM node:17.0.1-alpine //from cache</span><br><span class="line">WORKDIR /app    //from cache</span><br><span class="line">COPY package.json package-lock.json .   //每一次改动代码就会更新镜像不使用缓存</span><br><span class="line">RUN npm install --production</span><br><span class="line">COPY myapp /app</span><br><span class="line">CMD[&#x27;node&#x27;,&#x27;src/index.js&#x27;]</span><br></pre></td></tr></table></figure>
+<p>如此只有在package.json发生改变时，才会不走缓存 代码发生改变时，只有2层layer不走缓存</p>
+<blockquote>
+<p>总结: 将dockerfile的命令排序,使之顺序为从上往下为最不经常改变layer的命令到最经常改变layer的命令</p>
+</blockquote>
+<h2 id="5-使用-dockerignore文件-忽略一些不必要添加进来的文件"><a href="#5-使用-dockerignore文件-忽略一些不必要添加进来的文件" class="headerlink" title="5. 使用.dockerignore文件 忽略一些不必要添加进来的文件"></a>5. 使用.dockerignore文件 忽略一些不必要添加进来的文件</h2><p>.git </p>
+<p>.cache</p>
+<h2 id="6-使用multi-stage-分割-构建镜像和运行镜像"><a href="#6-使用multi-stage-分割-构建镜像和运行镜像" class="headerlink" title="6. 使用multi-stage 分割 构建镜像和运行镜像"></a>6. 使用multi-stage 分割 构建镜像和运行镜像</h2><p>例如:</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#build stage</span></span><br><span class="line"><span class="keyword">FROM</span> mave as build</span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /app</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> myapp /app</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> maven packge</span></span><br><span class="line"><span class="comment">#run stage</span></span><br><span class="line"><span class="keyword">FROM</span> tomcat</span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> --from=build /app/target/file.war /usr/local/tomcat/file.war</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>最以最后的FROM为基本镜像</p>
+</blockquote>
+<h2 id="7-使用最小权限的用户"><a href="#7-使用最小权限的用户" class="headerlink" title="7. 使用最小权限的用户"></a>7. 使用最小权限的用户</h2><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">RUN</span><span class="language-bash"> groupadd -r tom &amp;&amp; useradd -g tom tom</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">chmod</span> -R tom:tom /app</span></span><br><span class="line"><span class="keyword">USER</span> tom</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>一些官方镜像有默认的用户</p>
+</blockquote>
+<h2 id="8-使用docker-scan-检查镜像"><a href="#8-使用docker-scan-检查镜像" class="headerlink" title="8. 使用docker scan 检查镜像"></a>8. 使用docker scan 检查镜像</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker login</span><br><span class="line">...</span><br><span class="line">docker scan myapp:1.0</span><br></pre></td></tr></table></figure>
         </div>
 
         
 
         
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/docker/">#docker</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
 
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/03/04/Mysql%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86/"
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/03/26/k8s%E4%B9%8Bingress%E5%92%8Chelm/"
                         >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Mysql索引原理</span>
-                                <span class="post-nav-item">上一篇</span>
+                                <span class="post-nav-title-item">k8s之ingress和helm</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
                             </span>
                         </a>
                     </div>
-                
                 
             </div>
         

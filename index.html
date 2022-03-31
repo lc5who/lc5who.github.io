@@ -74,9 +74,9 @@
                     
                         <li class="menu-item">
                             <a class=""
-                               href="/categories"
+                               href="/tags"
                             >
-                                分类
+                                标签
                             </a>
                         </li>
                     
@@ -107,7 +107,7 @@
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/categories">分类</a>
+                       href="/tags">标签</a>
                 </li>
             
         </ul>
@@ -127,6 +127,263 @@
                 
                     <div class="home-content-container fade-in-down-animation">
     <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2022/03/30/docker%E4%BD%BF%E7%94%A8%E4%B9%8B%E5%85%AB%E5%A4%A7%E6%83%AF%E4%BE%8B/">
+                        docker使用之八大惯例
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        docker使用之八大惯例手法1. 使用官方镜像作为基础镜像2. 指定镜像版本 如: FROM node:17.0.13. 尽量使用体积较小的镜像如: FROM node:17.0.1-alpine4. 优化缓存每一层命令生成的容器镜像bad案例:
+...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Wed Mar 30 2022 22:37:01 GMT+0800">2022-03-30</span></span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/docker/">docker</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2022/03/30/docker%E4%BD%BF%E7%94%A8%E4%B9%8B%E5%85%AB%E5%A4%A7%E6%83%AF%E4%BE%8B/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2022/03/26/k8s%E4%B9%8Bingress%E5%92%8Chelm/">
+                        k8s之ingress和helm
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        ingress简单说就是nginx将域名解析到具体的服务,也就是说在服务的上层
+ingress controller
+指定所有的解析规则
+管理指向
+集群的入口点
+
+安装ingress controller
+ minikube addons enabl...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sat Mar 26 2022 17:02:25 GMT+0800">2022-03-26</span></span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/k8s/">k8s</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2022/03/26/k8s%E4%B9%8Bingress%E5%92%8Chelm/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2022/03/26/k8s%E4%B9%8Bnamespace/">
+                        k8s之namespace
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        Namespace默认有4个namespace
+
+kube-system 不能动kube内部的namespace
+kube-publice 存储configmap之类数据的namespace
+kube-node-release 节点信息namespa...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sat Mar 26 2022 15:45:02 GMT+0800">2022-03-26</span></span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/k8s/">k8s</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2022/03/26/k8s%E4%B9%8Bnamespace/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2022/03/26/k8s%E6%90%AD%E5%BB%BAmongodb%E4%B8%8Emongoexpress/">
+                        k8s搭建mongodb与mongoexpress
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        K8s搭建mongodb与mongoexpress搭建internal mongodb
+使用configmap 配置dburl,使用secretmap 配置dbuser,dupass
+
+mongodb.yaml
+1234567891011121314...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sat Mar 26 2022 11:40:00 GMT+0800">2022-03-26</span></span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/k8s/">k8s</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2022/03/26/k8s%E6%90%AD%E5%BB%BAmongodb%E4%B8%8Emongoexpress/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2022/03/26/k8s%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">
+                        k8s配置文件
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        k8s之配置文件12345678910111213141516171819202122apiVersion: apps/v1kind: Deploymentmetadata:  name: nginxspec:  selector:    match...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sat Mar 26 2022 11:17:32 GMT+0800">2022-03-26</span></span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/k8s/">k8s</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2022/03/26/k8s%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2022/03/25/k8s%E4%B9%8Bminicube/">
+                        k8s之minikube
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        minikube一个node运行了一个master 和 一个worker在一个节点上方便本地测试
+kubectlcommand line tool 与 k8s中的api server 联系,简单说管理工具。不仅只在minikube中使用,也可以在其它...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Mar 25 2022 16:16:04 GMT+0800">2022-03-25</span></span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/k8s/">k8s</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2022/03/25/k8s%E4%B9%8Bminicube/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
         
             <li class="home-article-item">
 
@@ -153,6 +410,18 @@ volumes  k8s组件,硬盘,可持续化存储,可附加在node...
     <div class="home-article-meta-info">
         <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Mar 25 2022 15:10:49 GMT+0800">2022-03-25</span></span>
         
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/k8s/">k8s</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
 
@@ -184,6 +453,18 @@ volumes  k8s组件,硬盘,可持续化存储,可附加在node...
         <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Mar 11 2022 11:18:53 GMT+0800">2022-03-11</span></span>
         
         
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/go/">go</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
     </div>
 
     <a href="/2022/03/11/go-swagger%E4%BD%BF%E7%94%A8/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
@@ -212,6 +493,18 @@ volumes  k8s组件,硬盘,可持续化存储,可附加在node...
     <div class="home-article-meta-info">
         <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Thu Mar 10 2022 13:25:48 GMT+0800">2022-03-10</span></span>
         
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E8%BD%AC%E8%BD%BD/">转载</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
 
@@ -249,161 +542,21 @@ wr...
         <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sun Mar 06 2022 01:27:05 GMT+0800">2022-03-06</span></span>
         
         
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/">分布式缓存</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
     </div>
 
     <a href="/2022/03/06/%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98%E4%B9%8B%E4%B8%80/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/03/05/go%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B9%8Bconsul/">
-                        docker搭建consul多节点
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        consul学习笔记windows下docker搭建consul多节点
- 在docker网站上有列出详细命令
-
-1docker run -d --name=dev-consul -p 8500:8500-e CONSUL_BIND_INTERFACE...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sat Mar 05 2022 15:47:40 GMT+0800">2022-03-05</span></span>
-        
-        
-    </div>
-
-    <a href="/2022/03/05/go%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B9%8Bconsul/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/03/04/go%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%80/">
-                        go微服务一
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        Go使用Protobuf
-第一步安装protobuf编译器第二步配置环境变量或将编译器拷贝置环境变量中某个文件夹第三步安装Go的protobuf的包
-这一步记得把下载下来的proto-gen-go.exe目录也就是gopath添加到环境变量否则会生成...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Mar 04 2022 23:54:10 GMT+0800">2022-03-04</span></span>
-        
-        
-    </div>
-
-    <a href="/2022/03/04/go%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%80/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/03/04/aborted/">
-                        git解决 ssl_read ,ssl的问题
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        解决办法记录一下之前尝试过各种 unset http.proxy 等一系列，最后发现还是这个管用
-git config http.postBuffer 524288000
-git config http.sslVerify &quot;false&q...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Mar 04 2022 17:27:57 GMT+0800">2022-03-04</span></span>
-        
-        
-    </div>
-
-    <a href="/2022/03/04/aborted/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/03/04/Mysql%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86/">
-                        Mysql索引原理
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        索引索引的底层数据索引采用B+树的数据结构.
-
-B+树中只有叶子节点会带有指向记录的指针（ROWID），而B树则所有节点都带有，在内部节点出现的索引项不会再出现在叶子节点中。
-B+树中所有叶子节点都是通过指针连接在一起，而B树不会。
-
-组合索引的最左...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Mar 04 2022 10:57:53 GMT+0800">2022-03-04</span></span>
-        
-        
-    </div>
-
-    <a href="/2022/03/04/Mysql%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/03/04/hello-world/">
-                        Hello World
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, yo...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Mar 04 2022 09:43:05 GMT+0800">2022-03-04</span></span>
-        
-        
-    </div>
-
-    <a href="/2022/03/04/hello-world/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -414,6 +567,10 @@ B+树中所有叶子节点都是通过指针连接在一起，而B树不会。
         <div class="paginator">
     
 
+    
+        <a class="next btn"
+           href="/page/2/"
+        >下一页</a>
     
 </div>
 
