@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Lcc&#39;s blog">
+    <meta name="description" content="Lcc&#39;s blog">
+    <meta name="author" content="Lcc">
+    
+    <title>
+        
+            go语言设计模式创建型设计模式 |
+        
+        Lcc&#39;s blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"lc5who.github.io","root":"/","language":"zh-CN"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Talk is cheap Show me your code"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Lcc&#39;s blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">go语言设计模式创建型设计模式</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Lcc</span>
+                        
+                            <span class="author-label">Lv3</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-03-31 10:23:23</span>
+        <span class="mobile">2022-03-31 10:23</span>
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="创建型设计模式"><a href="#创建型设计模式" class="headerlink" title="创建型设计模式"></a>创建型设计模式</h1><h2 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h2><p>抽象工厂比较简单.</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">///ifacotry.go</span></span><br><span class="line"><span class="keyword">package</span> abstractFactory</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> iMilkFactory <span class="keyword">interface</span> &#123;</span><br><span class="line">	MakeMilk() iMilk</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GetFactory</span><span class="params">(s <span class="type">string</span>)</span></span> iMilkFactory &#123;</span><br><span class="line">	<span class="keyword">if</span> s == <span class="string">&quot;mengniu&quot;</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> &amp;mengNiu&#123;&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> s == <span class="string">&quot;yili&quot;</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> &amp;yili&#123;&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">///imilk.go</span></span><br><span class="line"><span class="keyword">package</span> abstractFactory</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> iMilk <span class="keyword">interface</span> &#123;</span><br><span class="line">	setSugar(s <span class="type">string</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> milk <span class="keyword">struct</span> &#123;</span><br><span class="line">	Sugar <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *milk)</span></span> setSugar(s <span class="type">string</span>) &#123;</span><br><span class="line">	m.Sugar = s</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> mnMilk <span class="keyword">struct</span> &#123;</span><br><span class="line">	milk</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> ylMilk <span class="keyword">struct</span> &#123;</span><br><span class="line">	milk</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/// brand.go</span></span><br><span class="line"><span class="keyword">package</span> abstractFactory</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> mengNiu <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m mengNiu)</span></span> MakeMilk() iMilk &#123;</span><br><span class="line">	<span class="keyword">return</span> &amp;mnMilk&#123;milk&#123;Sugar: <span class="string">&quot;mengniu&quot;</span>&#125;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> yili <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(y yili)</span></span> MakeMilk() iMilk &#123;</span><br><span class="line">	<span class="keyword">return</span> &amp;mnMilk&#123;milk&#123;Sugar: <span class="string">&quot;yili&quot;</span>&#125;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/// main.go</span></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;developPattern/abstractFactory&quot;</span></span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	mengniuFactory := abstractFactory.GetFactory(<span class="string">&quot;mengniu&quot;</span>)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;#v&quot;</span>, mengniuFactory.MakeMilk())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="创建者模式"><a href="#创建者模式" class="headerlink" title="创建者模式"></a>创建者模式</h2><p>个人理解: 在抽象工厂模式上再封装一层，使之可以方便的调用工厂</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">///director.go</span></span><br><span class="line"><span class="keyword">package</span> builder</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> director <span class="keyword">struct</span> &#123;</span><br><span class="line">	Builder ibuild</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewDirector</span><span class="params">(ibuild2 ibuild)</span></span> *director &#123;</span><br><span class="line">	<span class="keyword">return</span> &amp;director&#123;Builder: ibuild2&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(d *director)</span></span> SetBuilder(ibuild2 ibuild) &#123;</span><br><span class="line">	d.Builder = ibuild2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(d *director)</span></span> Build() Juice &#123;</span><br><span class="line">	<span class="keyword">return</span> d.Builder.GetJuice()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/// builder.go</span></span><br><span class="line"><span class="keyword">package</span> builder</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> ibuild <span class="keyword">interface</span> &#123;</span><br><span class="line">	GetJuice() Juice</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GetBuilder</span><span class="params">(s <span class="type">string</span>)</span></span> ibuild &#123;</span><br><span class="line">	<span class="keyword">if</span> s == <span class="string">&quot;apple&quot;</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> &amp;appjuice&#123;&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> s == <span class="string">&quot;orange&quot;</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> &amp;orangejuice&#123;&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//juice</span></span><br><span class="line"><span class="keyword">package</span> builder</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Juice <span class="keyword">struct</span> &#123;</span><br><span class="line">	Color <span class="type">string</span></span><br><span class="line">	Suger <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> appjuice <span class="keyword">struct</span> &#123;</span><br><span class="line">	Juice</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(receiver *appjuice)</span></span> GetJuice() Juice &#123;</span><br><span class="line">	<span class="keyword">return</span> Juice&#123;</span><br><span class="line">		Color: <span class="string">&quot;red&quot;</span>,</span><br><span class="line">		Suger: <span class="string">&quot;app&quot;</span>,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> orangejuice <span class="keyword">struct</span> &#123;</span><br><span class="line">	Juice</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(receiver *orangejuice)</span></span> GetJuice() Juice &#123;</span><br><span class="line">	<span class="keyword">return</span> Juice&#123;</span><br><span class="line">		Color: <span class="string">&quot;yellow&quot;</span>,</span><br><span class="line">		Suger: <span class="string">&quot;oran&quot;</span>,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//main.go</span></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;developPattern/builder&quot;</span></span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	appjuice := builder.GetBuilder(<span class="string">&quot;apple&quot;</span>)</span><br><span class="line">	orajuice := builder.GetBuilder(<span class="string">&quot;orange&quot;</span>)</span><br><span class="line">	director := builder.NewDirector(appjuice)</span><br><span class="line">	juice := director.Build()</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%#v&quot;</span>, juice)</span><br><span class="line"></span><br><span class="line">	director.SetBuilder(orajuice)</span><br><span class="line">	juiceb := director.Build()</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%#v&quot;</span>, juiceb)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><p>感觉比抽象工厂少了个抽象的环节。哈哈哈</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> factory</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> iMilk <span class="keyword">interface</span> &#123;</span><br><span class="line">	SetName(s <span class="type">string</span>)</span><br><span class="line">	SetPrice(s <span class="type">string</span>)</span><br><span class="line">	GetName() <span class="type">string</span></span><br><span class="line">	GetPrice() <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Milk <span class="keyword">struct</span> &#123;</span><br><span class="line">	Name  <span class="type">string</span></span><br><span class="line">	Price <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *Milk)</span></span> SetName(s <span class="type">string</span>) &#123;</span><br><span class="line">	m.Name = s</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *Milk)</span></span> SetPrice(s <span class="type">string</span>) &#123;</span><br><span class="line">	m.Price = s</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *Milk)</span></span> GetName() <span class="type">string</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> m.Name</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *Milk)</span></span> GetPrice() <span class="type">string</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> m.Price</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MnMilk <span class="keyword">struct</span> &#123;</span><br><span class="line">	Milk</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> YlMilk <span class="keyword">struct</span> &#123;</span><br><span class="line">	Milk</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewMnMilk</span><span class="params">()</span></span> iMilk &#123;</span><br><span class="line">	<span class="keyword">return</span> &amp;MnMilk&#123;</span><br><span class="line">		Milk: Milk&#123;</span><br><span class="line">			Name:  <span class="string">&quot;mengniu&quot;</span>,</span><br><span class="line">			Price: <span class="string">&quot;3&quot;</span>,</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewYlMilk</span><span class="params">()</span></span> iMilk &#123;</span><br><span class="line">	<span class="keyword">return</span> &amp;YlMilk&#123;</span><br><span class="line">		Milk: Milk&#123;</span><br><span class="line">			Name:  <span class="string">&quot;yili&quot;</span>,</span><br><span class="line">			Price: <span class="string">&quot;4&quot;</span>,</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GetMilk</span><span class="params">(s <span class="type">string</span>)</span></span> iMilk &#123;</span><br><span class="line">	<span class="keyword">if</span> s == <span class="string">&quot;mengniu&quot;</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> NewMnMilk()</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> s == <span class="string">&quot;yili&quot;</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> NewYlMilk()</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><p>这个就直接上代码 go中有goroutine所以一般用锁创建单例或sync.once,或在init函数中创建</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> singleinstance</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;sync&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> lock = &amp;sync.Mutex&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Single <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> SingleInstance *Single</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GetSingleInstance</span><span class="params">()</span></span> *Single &#123;</span><br><span class="line">	<span class="keyword">if</span> SingleInstance == <span class="literal">nil</span> &#123;</span><br><span class="line">		lock.Lock()</span><br><span class="line">		<span class="keyword">defer</span> lock.Unlock()</span><br><span class="line">		<span class="keyword">if</span> SingleInstance == <span class="literal">nil</span> &#123;</span><br><span class="line">			SingleInstance = &amp;Single&#123;&#125;</span><br><span class="line">			fmt.Println(<span class="string">&quot;instance is creating&quot;</span>)</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			fmt.Println(<span class="string">&quot;instance is created&quot;</span>)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;instance is created&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> SingleInstance</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/// sync.once版本</span></span><br><span class="line"><span class="keyword">var</span> once sync.Once</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> single <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> singleInstance *single</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getInstance</span><span class="params">()</span></span> *single &#123;</span><br><span class="line">    <span class="keyword">if</span> singleInstance == <span class="literal">nil</span> &#123;</span><br><span class="line">        once.Do(</span><br><span class="line">            <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">                fmt.Println(<span class="string">&quot;Creting Single Instance Now&quot;</span>)</span><br><span class="line">                singleInstance = &amp;single&#123;&#125;</span><br><span class="line">            &#125;)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        fmt.Println(<span class="string">&quot;Single Instance already created-2&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> singleInstance</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="对象池模式"><a href="#对象池模式" class="headerlink" title="对象池模式"></a>对象池模式</h2><p>用法：当对象创建的开销很大或对象时不时的需要被用到。对象池里的对象不会被销毁<br>简单说就是做了个队列，管理池中的对象一般拥有取出，收回的方法</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> objectPool</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;sync&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> iPoolObject <span class="keyword">interface</span> &#123;</span><br><span class="line">	GetID() <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> Pool <span class="keyword">struct</span> &#123;</span><br><span class="line">	Idle   []iPoolObject</span><br><span class="line">	Active []iPoolObject</span><br><span class="line">	Cap    <span class="type">int</span></span><br><span class="line">	Mulock *sync.Mutex</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">InitPool</span><span class="params">(poolObjects []iPoolObject)</span></span> (*Pool, <span class="type">error</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(poolObjects) == <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, fmt.Errorf(<span class="string">&quot;Cannot craete a pool of 0 length&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	active := <span class="built_in">make</span>([]iPoolObject, <span class="number">0</span>)</span><br><span class="line">	pool := &amp;Pool&#123;</span><br><span class="line">		Idle:   poolObjects,</span><br><span class="line">		Active: active,</span><br><span class="line">		Cap:    <span class="built_in">len</span>(poolObjects),</span><br><span class="line">		Mulock: <span class="built_in">new</span>(sync.Mutex),</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> pool, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p *Pool)</span></span> loan() (iPoolObject, <span class="type">error</span>) &#123;</span><br><span class="line">	p.Mulock.Lock()</span><br><span class="line">	<span class="keyword">defer</span> p.Mulock.Unlock()</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(p.Idle) == <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, fmt.Errorf(<span class="string">&quot;No pool object free. Please request after sometime&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	obj := p.Idle[<span class="number">0</span>]</span><br><span class="line">	p.Idle = p.Idle[<span class="number">1</span>:]</span><br><span class="line">	p.Active = <span class="built_in">append</span>(p.Active, obj)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;Loan Pool Object with ID: %s\n&quot;</span>, obj.GetID())</span><br><span class="line">	<span class="keyword">return</span> obj, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p *Pool)</span></span> receive(target iPoolObject) <span class="type">error</span> &#123;</span><br><span class="line">	p.Mulock.Lock()</span><br><span class="line">	<span class="keyword">defer</span> p.Mulock.Unlock()</span><br><span class="line">	err := p.remove(target)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> err</span><br><span class="line">	&#125;</span><br><span class="line">	p.Idle = <span class="built_in">append</span>(p.Idle, target)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;Return Pool Object with ID: %s\n&quot;</span>, target.GetID())</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p *Pool)</span></span> remove(target iPoolObject) <span class="type">error</span> &#123;</span><br><span class="line">	currentActiveLength := <span class="built_in">len</span>(p.Active)</span><br><span class="line">	<span class="keyword">for</span> i, obj := <span class="keyword">range</span> p.Active &#123;</span><br><span class="line">		<span class="keyword">if</span> obj.GetID() == target.GetID() &#123;</span><br><span class="line">			p.Active[currentActiveLength<span class="number">-1</span>], p.Active[i] = p.Active[i], p.Active[currentActiveLength<span class="number">-1</span>]</span><br><span class="line">			p.Active = p.Active[:currentActiveLength<span class="number">-1</span>]</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> fmt.Errorf(<span class="string">&quot;Targe Pool object doesn&#x27;t belong to the Pool&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Connection <span class="keyword">struct</span> &#123;</span><br><span class="line">	Id <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *Connection)</span></span> GetID() <span class="type">string</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> c.Id</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h2><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> prototype</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Inode <span class="keyword">interface</span> &#123;</span><br><span class="line">	Print(string2 <span class="type">string</span>)</span><br><span class="line">	Clone() Inode</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> File <span class="keyword">struct</span> &#123;</span><br><span class="line">	Name <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(f *File)</span></span> Print(indentation <span class="type">string</span>) &#123;</span><br><span class="line">	fmt.Println(indentation + f.Name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(f *File)</span></span> Clone() Inode &#123;</span><br><span class="line">	<span class="keyword">return</span> &amp;File&#123;Name: f.Name + <span class="string">&quot;_clone&quot;</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> folder <span class="keyword">struct</span> &#123;</span><br><span class="line">	childrens []inode</span><br><span class="line">	name      <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(f *folder)</span></span> <span class="built_in">print</span>(indentation <span class="type">string</span>) &#123;</span><br><span class="line">	fmt.Println(indentation + f.name)</span><br><span class="line">	<span class="keyword">for</span> _, i := <span class="keyword">range</span> f.childrens &#123;</span><br><span class="line">		i.<span class="built_in">print</span>(indentation + indentation)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(f *folder)</span></span> clone() inode &#123;</span><br><span class="line">	cloneFolder := &amp;folder&#123;name: f.name + <span class="string">&quot;_clone&quot;</span>&#125;</span><br><span class="line">	<span class="keyword">var</span> tempChildrens []inode</span><br><span class="line">	<span class="keyword">for</span> _, i := <span class="keyword">range</span> f.childrens &#123;</span><br><span class="line">		<span class="built_in">copy</span> := i.clone()</span><br><span class="line">		tempChildrens = <span class="built_in">append</span>(tempChildrens, <span class="built_in">copy</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	cloneFolder.childrens = tempChildrens</span><br><span class="line">	<span class="keyword">return</span> cloneFolder</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#设计模式</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/03/30/docker%E4%BD%BF%E7%94%A8%E4%B9%8B%E5%85%AB%E5%A4%A7%E6%83%AF%E4%BE%8B/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">docker使用之八大惯例</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Lcc</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>
