@@ -9,7 +9,7 @@
     
     <title>
         
-            深入解析css读书笔记二 |
+            深入解析css读书笔记三 |
         
         Lcc&#39;s blog
     </title>
@@ -131,7 +131,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">深入解析css读书笔记二</span>
+            <span class="title-hover-animation">深入解析css读书笔记三</span>
         </div>
 
         
@@ -150,8 +150,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-06-07 11:21:51</span>
-        <span class="mobile">2022-06-07 11:21</span>
+        <span class="pc">2022-06-07 13:43:21</span>
+        <span class="mobile">2022-06-07 13:43</span>
     </span>
     
     
@@ -179,39 +179,47 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="Chapter-2-相对单位"><a href="#Chapter-2-相对单位" class="headerlink" title="Chapter 2. 相对单位"></a>Chapter 2. 相对单位</h1><h2 id="em"><a href="#em" class="headerlink" title="em"></a>em</h2><blockquote>
-<p>em是最常见的相对长度单位，适合基于特定的字号进行排版。在CSS中，1em等于当前元素的字号，其准确值取决于作用的元素</p>
-</blockquote>
-<pre><code>浏览器会根据相对单位的值计算出绝对值，称作计算值（computed value）。
-在本例中，设置内边距为2em，会产生一个32px的计算值。如果另一个选择器也命中了相同的元素，并修改了字号，那么就会改变em的局部含义，计算出来的内边距也会随之变化。
-当设置padding、height、width、border-radius等属性时，使用em会很方便。这是因为当元素继承了不同的字号，或者用户改变了字体设置时，这些属性会跟着元素均匀地缩放。
-</code></pre>
-<ul>
-<li>谈到font-size属性时，em表现得不太一样。之前提到过，当前元素的字号决定了em。但是，如果声明font-size: 1.2em，会发生什么呢？一个字号当然不能等于自己的1.2倍。实际上，这个font-size是根据继承的字号来计算的。</li>
+            <h1 id="Chapter-3-盒模型"><a href="#Chapter-3-盒模型" class="headerlink" title="Chapter 3. 盒模型"></a>Chapter 3. 盒模型</h1><h2 id="3-1-元素宽度问题"><a href="#3-1-元素宽度问题" class="headerlink" title="3.1 元素宽度问题"></a>3.1 元素宽度问题</h2><h3 id="当给一个元素设置宽或高的时候，指定的是内容的宽或高，所有内边距、边框、外边距都是追加到该宽度上的。解决方法"><a href="#当给一个元素设置宽或高的时候，指定的是内容的宽或高，所有内边距、边框、外边距都是追加到该宽度上的。解决方法" class="headerlink" title="当给一个元素设置宽或高的时候，指定的是内容的宽或高，所有内边距、边框、外边距都是追加到该宽度上的。解决方法:"></a>当给一个元素设置宽或高的时候，指定的是内容的宽或高，所有内边距、边框、外边距都是追加到该宽度上的。解决方法:</h3><ul>
+<li><p>避免魔术数值</p>
+<p>  替代魔术数值的一个方法是让浏览器帮忙计算。在本例中，因为加了内边距，两列的宽度总和超出了3em，所以可以使用calc()函数减去这个值，得到刚好100%的总和。比如设置侧边栏宽度为calc(30% - 3em)就能刚好并排放下两列，但是还有更好的解决办法。</p>
+</li>
+<li><p>调整盒模型</p>
+<p>  CSS中可以使用box-sizing属性调整盒模型的行为。box-sizing的默认值为content-box，这意味任何指定的宽或高都只会设置内容盒子的大小。将box-sizing设置为border-box后，height和width属性会设置内容、内边距以及边框的大小总和，这刚好符合示例的要求。</p>
+</li>
 </ul>
-<h2 id="rem"><a href="#rem" class="headerlink" title="rem"></a>rem</h2><blockquote>
-<p>rem是root em的缩写。rem不是相对于当前元素，而是相对于根元素的单位。不管在文档的什么位置使用rem，1.2rem都会有相同的计算值：1.2乘以根元素的字号</p>
+<h4 id="全局修改盒模型"><a href="#全局修改盒模型" class="headerlink" title="全局修改盒模型"></a>全局修改盒模型</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">*,</span><br><span class="line"><span class="selector-pseudo">::before</span>,</span><br><span class="line"><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//让全局修改盒模型为<span class="attribute">border</span>-box更稳健</span><br><span class="line"></span><br><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box;   ←---- 根元素设置为<span class="attribute">border</span>-box</span><br><span class="line">&#125;                               </span><br><span class="line"></span><br><span class="line">*,</span><br><span class="line"><span class="selector-pseudo">::before</span>,</span><br><span class="line"><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">box-sizing</span>: inherit;    ←---- 告诉其他所有元素和伪元素继承其盒模型</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>善于使用 calc()操作宽度</p>
 </blockquote>
-<pre><code>一般会用rem设置字号，用px设置边框，用em设置其他大部分属性，尤其是内边距、外边距和圆角（不过我有时用百分比设置容器宽度）
-</code></pre>
-<h2 id="视口相对单位"><a href="#视口相对单位" class="headerlink" title="视口相对单位"></a>视口相对单位</h2><blockquote>
-<p>相对于浏览器视口定义长度的视口的相对单位。</p>
-</blockquote>
-<pre><code>vh：视口高度的1/100。
-vw：视口宽度的1/100。
-vmin：视口宽、高中较小的一方的1/100（IE9中叫vm，而不是vmin）。
-vmax：视口宽、高中较大的一方的1/100（本书写作时IE和Edge均不支持vmax）2。
-
-相对视口单位有一个不起眼的用途，就是设置字号，但我发现它比用vh和vw设置元素的宽和高还要实用。
-如果给一个元素加上font-size: 2vw会发生什么？在一个1200px的桌面显示器上，计算值为24px（1200的2%）。在一个768px宽的平板上，计算值约为15px（768的2%）。这样做的好处在于元素能够在这两种大小之间平滑地过渡，这意味着不会在某个断点突然改变。当视口大小改变时，元素会逐渐过渡。
+<h2 id="3-2-元素高度问题"><a href="#3-2-元素高度问题" class="headerlink" title="3.2 元素高度问题"></a>3.2 元素高度问题</h2><pre><code>处理元素高度的方式跟处理宽度不一样。之前对border-box的修改依然适用于高度，而且很有用，但是通常最好避免给元素指定明确的高度。普通文档流是为限定的宽度和无限的高度设计的。内容会填满视口的宽度，然后在必要的时候折行。因此，容器的高度由内容天然地决定，而不是容器自己决定。
 </code></pre>
 <blockquote>
-<p>当一个元素的值定义为长度（px、em、rem，等等）时，子元素会继承它的计算值。当使用em等单位定义行高时，它们的值是计算值，传递到了任何继承子元素上。如果子元素有不同的字号，并且继承了line-height属性，就会造成意想不到的结果，比如文字重叠。</p>
+<p><strong>普通文档流</strong>:指的是网页元素的默认布局行为。行内元素跟随文字的方向从左到右排列，当到达容器边缘时会换行。块级元素会占据完整的一行，前后都有换行</p>
 </blockquote>
-<h2 id="自定义属性"><a href="#自定义属性" class="headerlink" title="自定义属性"></a>自定义属性</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span>&#123;</span><br><span class="line">    <span class="attr">--main-font</span>: Helvetica, Arial, sans-serif;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">p</span> &#123;                （以下<span class="number">3</span>行）将段落的字体设置为Helvetica、Arial、sans-serif</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="built_in">var</span>(--main-font);   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<pre><code>--main-font 是自定义属性  使用时可以 var(--main-font)
-var(--main-font,sans-serif) 第二个参数是默认值,当第一个参数为无效值时
+<h2 id="3-3-等高列问题"><a href="#3-3-等高列问题" class="headerlink" title="3.3 等高列问题"></a>3.3 等高列问题</h2><h3 id="Flex布局"><a href="#Flex布局" class="headerlink" title="Flex布局"></a>Flex布局</h3><pre><code>Flexbox不需要一个额外的div包裹元素，它默认会产生等高的元素。此外也不需要使用负外边距。
+Min-height 会将元素拉升至最小高度
 </code></pre>
+<h2 id="3-4-垂直居中问题"><a href="#3-4-垂直居中问题" class="headerlink" title="3.4 垂直居中问题"></a>3.4 垂直居中问题</h2><ul>
+<li>vertical-align声明只会影响行内元素或者table-cell元素。对于行内元素，它控制着该元素跟同一行内其他元素之间的对齐关系。比如，可以用它控制一个行内的图片跟相邻的文字对齐。</li>
+</ul>
+<ol>
+<li>使用内边距让内容垂直居中<br> padding-top: 10px;padding-bottom: 10px;</li>
+</ol>
+<pre><code>可以用一个自然高度的容器吗？给容器加上相等的上下内边距让内容居中。
+
+容器需要指定高度或者避免使用内边距吗？对容器使用display: table-cell和vertical-align: middle。
+
+可以用Flexbox吗？ 如果不需要支持IE9，可以用Flexbox居中内容。
+
+容器里面的内容只有一行文字吗？设置一个大的行高，让它等于理想的容器高度。这样会让容器高度扩展到能够容纳行高。如果内容不是行内元素，可以设置为inline-block。
+
+容器和内容的高度都知道吗？将内容绝对定位。（只有当前面提到的方法都无效时才推荐这种方式。）
+
+不知道内部元素的高度？用绝对定位结合变形（transform）。参见第15章的例子。（还是只有当前面提到的方法都无效时才推荐该方法。）
+</code></pre>
+<h2 id="3-5-负边距"><a href="#3-5-负边距" class="headerlink" title="3.5 负边距"></a>3.5 负边距</h2><blockquote>
+<p><em>负外边距的具体行为取决于设置在元素的哪边，如图3-15所示。如果设置左边或顶部的负外边距，元素就会相应地向左或向上移动，导致元素与它前面的元素重叠，如果设置右边或者底部的负外边距，并不会移动元素，而是将它后面的元素拉过来。给元素底部加上负外边距并不等同于给它下面的元素顶部加上负外边距。</em></p>
+</blockquote>
 
         </div>
 
@@ -230,29 +238,14 @@ var(--main-font,sans-serif) 第二个参数是默认值,当第一个参数为无
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/06/07/%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90css%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%B8%89/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">深入解析css读书笔记三</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/06/07/%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90css%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%B8%80/"
+                           href="/2022/06/07/%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90css%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%BA%8C/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">深入解析css读书笔记一</span>
+                                <span class="post-nav-title-item">深入解析css读书笔记二</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
