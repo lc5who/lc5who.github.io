@@ -197,7 +197,7 @@
 <li>write：只更新缓存，缓存服务异步更新db</li>
 <li>read：miss后由缓存服务加载+写cache</li>
 <li>特点：写性能最高，定期异步刷新，存在数据丢失概率</li>
-<li>适合场景：写频率超高，需要合并    <h3 id="缓存七大问题"><a href="#缓存七大问题" class="headerlink" title="缓存七大问题"></a>缓存七大问题</h3></li>
+<li>适合场景：写频率超高，需要合并    <h3 id="缓存三大问题"><a href="#缓存三大问题" class="headerlink" title="缓存三大问题"></a>缓存三大问题</h3></li>
 </ul>
 </li>
 </ol>
@@ -224,6 +224,50 @@
 <h4 id="一般解决策略：对未查询到值的键依然缓存null或特殊的值-使用布隆过滤器"><a href="#一般解决策略：对未查询到值的键依然缓存null或特殊的值-使用布隆过滤器" class="headerlink" title="一般解决策略：对未查询到值的键依然缓存null或特殊的值||使用布隆过滤器"></a>一般解决策略：对未查询到值的键依然缓存null或特殊的值||使用布隆过滤器</h4></li>
 </ol>
 <hr>
+<ul>
+<li>缓存雪崩<blockquote>
+<p>部分缓存节点不可用，导致整个缓存体系，服务系统不可用的情况    </p>
+</blockquote>
+</li>
+</ul>
+<ol>
+<li>缓存不支持rehash导致的系统雪崩不可用</li>
+<li>缓存支持rehash导致的系统雪崩不可用<h4 id="一般解决方案："><a href="#一般解决方案：" class="headerlink" title="一般解决方案："></a>一般解决方案：</h4></li>
+</ol>
+<ul>
+<li>增加db读写开关，慢查询超过阀值，关闭开关，failfast</li>
+<li>多副本cache架构，任何cache池miss后，读其他cache副本</li>
+<li>实时监控，及时发现并恢复，增加自动故障转移策略</li>
+</ul>
+<hr>
+<h3 id="缓存数据问题"><a href="#缓存数据问题" class="headerlink" title="缓存数据问题"></a>缓存数据问题</h3><ol>
+<li>cache数据与db数据不一致</li>
+</ol>
+<ul>
+<li>更新db后，cache更新失败，cache存的老数据</li>
+<li>采用rehash策略，在节点多次上下线后，也会产生脏数据<h4 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h4></li>
+</ul>
+<ol>
+<li>cache更新失败后，重试or延迟删除</li>
+<li>调短过期时间，db重新加载</li>
+<li>拒绝rehash漂移，采用缓存分层策略</li>
+</ol>
+<hr>
+<ol start="2">
+<li>数据并发竞争<blockquote>
+<p>高并发访问场景，缓存miss，并发到db查相同key</p>
+</blockquote>
+<h4 id="业务场景："><a href="#业务场景：" class="headerlink" title="业务场景："></a>业务场景：</h4></li>
+</ol>
+<ul>
+<li>某车次缓存信息过期，仍然有大量用户同时查询<h4 id="解决方案：-1"><a href="#解决方案：-1" class="headerlink" title="解决方案："></a>解决方案：</h4></li>
+</ul>
+<ol>
+<li>缓存miss后，加全局锁，唯一进程查db并回写</li>
+<li>其他进程查询，若缓存miss，先查是否倍锁定，发现有锁就等待</li>
+<li>等加锁进程回写完毕后，从缓存加载</li>
+<li>缓存增加多个备份 </li>
+</ol>
 
         </div>
 
