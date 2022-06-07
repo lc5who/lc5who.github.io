@@ -9,7 +9,7 @@
     
     <title>
         
-            python开发区块链之四-web3.py |
+            深入解析css读书笔记一 |
         
         Lcc&#39;s blog
     </title>
@@ -131,7 +131,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">python开发区块链之四-web3.py</span>
+            <span class="title-hover-animation">深入解析css读书笔记一</span>
         </div>
 
         
@@ -150,8 +150,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-05-27 14:52:10</span>
-        <span class="mobile">2022-05-27 14:52</span>
+        <span class="pc">2022-06-07 10:13:55</span>
+        <span class="mobile">2022-06-07 10:13</span>
     </span>
     
     
@@ -160,7 +160,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/ethereum/">ethereum</a>&nbsp;
+                        <a href="/tags/css/">css</a>&nbsp;
                     </li>
                 
             </ul>
@@ -179,11 +179,39 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="Lesson-4-Web3-py-Simple-Storage"><a href="#Lesson-4-Web3-py-Simple-Storage" class="headerlink" title="Lesson 4: Web3.py Simple Storage"></a>Lesson 4: Web3.py Simple Storage</h1><h2 id="1-complie-contract"><a href="#1-complie-contract" class="headerlink" title="1. complie contract"></a>1. complie contract</h2><pre><code>//安装编译库
-pip install py-solc-x
+            <h1 id="Chapter-1-层叠·优先级·继承"><a href="#Chapter-1-层叠·优先级·继承" class="headerlink" title="Chapter 1. 层叠·优先级·继承"></a>Chapter 1. 层叠·优先级·继承</h1><h2 id="层叠"><a href="#层叠" class="headerlink" title="层叠"></a>层叠</h2><h3 id="1-样式表的来源：样式是从哪里来的，包括你的样式和浏览器默认样式等。"><a href="#1-样式表的来源：样式是从哪里来的，包括你的样式和浏览器默认样式等。" class="headerlink" title="1. 样式表的来源：样式是从哪里来的，包括你的样式和浏览器默认样式等。"></a>1. 样式表的来源：样式是从哪里来的，包括你的样式和浏览器默认样式等。</h3><ul>
+<li>作者样式表 </li>
+<li>用户代理样式表(浏览器自带)</li>
+</ul>
+<h3 id="2-选择器优先级：哪些选择器比另一些选择器更重要。"><a href="#2-选择器优先级：哪些选择器比另一些选择器更重要。" class="headerlink" title="2. 选择器优先级：哪些选择器比另一些选择器更重要。"></a>2. 选择器优先级：哪些选择器比另一些选择器更重要。</h3><p><img src="https://s3.bmp.ovh/imgs/2022/06/07/ce80dbac74903d7e.png"></p>
+<pre><code>简单说: id&gt;类&gt;标签  且选择器越多越精准那么优先级就越高.
 </code></pre>
-<p>python 代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Installing...&quot;</span>)</span><br><span class="line">install_solc(<span class="string">&quot;0.6.0&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Solidity source code</span></span><br><span class="line">compiled_sol = compile_standard(</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;language&quot;</span>: <span class="string">&quot;Solidity&quot;</span>,</span><br><span class="line">        <span class="string">&quot;sources&quot;</span>: &#123;<span class="string">&quot;SimpleStorage.sol&quot;</span>: &#123;<span class="string">&quot;content&quot;</span>: simple_storage_file&#125;&#125;,</span><br><span class="line">        <span class="string">&quot;settings&quot;</span>: &#123;</span><br><span class="line">            <span class="string">&quot;outputSelection&quot;</span>: &#123;</span><br><span class="line">                <span class="string">&quot;*&quot;</span>: &#123;</span><br><span class="line">                    <span class="string">&quot;*&quot;</span>: [<span class="string">&quot;abi&quot;</span>, <span class="string">&quot;metadata&quot;</span>, <span class="string">&quot;evm.bytecode&quot;</span>, <span class="string">&quot;evm.bytecode.sourceMap&quot;</span>]</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    solc_version=<span class="string">&quot;0.6.0&quot;</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>0,0,0,0  -&gt;  id,class,tag,important  其中important的优先级最高</p>
+<h3 id="3-源码顺序：样式在样式表里的声明顺序。"><a href="#3-源码顺序：样式在样式表里的声明顺序。" class="headerlink" title="3. 源码顺序：样式在样式表里的声明顺序。"></a>3. 源码顺序：样式在样式表里的声明顺序。</h3><pre><code>书写顺序之所以很重要，是因为层叠。优先级相同时，后出现的样式会覆盖先出现的样式
+</code></pre>
+<h3 id="两条经验法则"><a href="#两条经验法则" class="headerlink" title="两条经验法则"></a>两条经验法则</h3><pre><code>(1) 在选择器中不要使用ID。就算只用一个ID，也会大幅提升优先级。当需要覆盖这个选择器时，通常找不到另一个有意义的ID，于是就会复制原来的选择器，然后加上另一个类，让它区别于想要覆盖的选择器。
+(2) 不要使用!important。它比ID更难覆盖，一旦用了它，想要覆盖原先的声明，就需要再加上一个!important，而且依然要处理优先级的问题。
+这两条规则是很好的建议，但不必固守它们，因为也有例外。不要为了赢得优先级竞赛而习惯性地使用这两个方法。
+</code></pre>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><pre><code>    如果一个元素的某个属性没有层叠值，则可能会继承某个祖先元素的值。比如通常会给&lt;body&gt;元素加上font-family，里面的所有祖先元素都会继承这个字体，就不必给页面的每个元素明确指定字体了。
+不是所有的属性都能被继承。默认情况下，只有特定的一些属性能被继承，通常是我们希望被继承的那些。它们主要是跟文本相关的属性：color、font、font-family、font-size、font-weight、font-variant、font-style、line-height、letter-spacing、text-align、text-indent、text-transform、white-space以及word-spacing。
+    还有一些其他的属性也可以被继承，比如列表属性：list-style、list-style-type、list-style-position以及list-style-image。表格的边框属性border-collapse和border-spacing也能被继承。注意，这些属性控制的是表格的边框行为，而不是常用于指定非表格元素边框的属性。（恐怕没人希望将一个&lt;div&gt;的边框传递到每一个后代元素。）以上为不完全枚举，但是已经很详尽了。
+我们可以在适当的场景使用继承。比如给body元素应用字体，让后代元素继承该字体
+</code></pre>
+<p><img src="https://s3.bmp.ovh/imgs/2022/06/07/19db97a13177d8bb.png"></p>
+<h3 id="inherit-amp-amp-initial"><a href="#inherit-amp-amp-initial" class="headerlink" title="inherit &amp;&amp;  initial"></a>inherit &amp;&amp;  initial</h3><ul>
+<li>inherit =  继承父级元素的该层叠值</li>
+<li>initial =  声明的默认值 如 width = initial = auto</li>
+</ul>
+<h2 id="简写属性"><a href="#简写属性" class="headerlink" title="简写属性"></a>简写属性</h2><blockquote>
+<p>是用于同时给多个属性赋值的属性。比如font是一个简写属性，可以用于设置多种字体属性。它指定了font-style、font-weight、font-size、font-height以及font-family。</p>
+</blockquote>
+<pre><code>大多数简写属性可以省略一些值，只指定我们关注的值。但是要知道，这样做仍然会设置省略的值，即它们会被隐式地设置为初始值。这会默默覆盖在其他地方定义的样式。比如，如果给网页标题使用简写属性font时，省略font-weight，那么字体粗细就会被设置为normal
+</code></pre>
+<h3 id="简写属性的顺序"><a href="#简写属性的顺序" class="headerlink" title="简写属性的顺序"></a>简写属性的顺序</h3><pre><code>简写属性会尽量包容指定的属性值的顺序。可以设置border: 1px solid black或者border: black 1px solid，两者都会生效。这是因为浏览器知道宽度、颜色、边框样式分别对应什么类型的值。
+有些特殊的如 padding margin  记忆口诀 TRouBLe  top -&gt;right -&gt;bottom-&gt;left
+</code></pre>
+
         </div>
 
         
@@ -192,7 +220,7 @@ pip install py-solc-x
             <ul class="post-tags-box">
                 
                     <li class="tag-item">
-                        <a href="/tags/ethereum/">#ethereum</a>&nbsp;
+                        <a href="/tags/css/">#css</a>&nbsp;
                     </li>
                 
             </ul>
@@ -201,29 +229,14 @@ pip install py-solc-x
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/05/31/python%E5%BC%80%E5%8F%91%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B9%8B%E5%85%AD-tokenstandards/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">python开发区块链之六-tokenstandards</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/05/26/python%E5%BC%80%E5%8F%91%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B9%8B%E4%B8%89-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/"
+                           href="/2022/05/31/python%E5%BC%80%E5%8F%91%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B9%8B%E4%BA%94-Brownie/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">python开发区块链之三-基础概念</span>
+                                <span class="post-nav-title-item">python开发区块链之五-Brownie</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">

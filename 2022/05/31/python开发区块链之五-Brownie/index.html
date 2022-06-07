@@ -9,7 +9,7 @@
     
     <title>
         
-            python开发区块链之四-web3.py |
+            python开发区块链之五-Brownie |
         
         Lcc&#39;s blog
     </title>
@@ -131,7 +131,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">python开发区块链之四-web3.py</span>
+            <span class="title-hover-animation">python开发区块链之五-Brownie</span>
         </div>
 
         
@@ -150,8 +150,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-05-27 14:52:10</span>
-        <span class="mobile">2022-05-27 14:52</span>
+        <span class="pc">2022-05-31 10:28:17</span>
+        <span class="mobile">2022-05-31 10:28</span>
     </span>
     
     
@@ -179,11 +179,13 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="Lesson-4-Web3-py-Simple-Storage"><a href="#Lesson-4-Web3-py-Simple-Storage" class="headerlink" title="Lesson 4: Web3.py Simple Storage"></a>Lesson 4: Web3.py Simple Storage</h1><h2 id="1-complie-contract"><a href="#1-complie-contract" class="headerlink" title="1. complie contract"></a>1. complie contract</h2><pre><code>//安装编译库
-pip install py-solc-x
+            <h1 id="Brownie"><a href="#Brownie" class="headerlink" title="Brownie"></a>Brownie</h1><h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><pre><code class="bash">    python3 -m pip install --user pipx
+    python3 -m pipx ensurepath
+
+    pipx install eth-brownie
 </code></pre>
-<p>python 代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Installing...&quot;</span>)</span><br><span class="line">install_solc(<span class="string">&quot;0.6.0&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Solidity source code</span></span><br><span class="line">compiled_sol = compile_standard(</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;language&quot;</span>: <span class="string">&quot;Solidity&quot;</span>,</span><br><span class="line">        <span class="string">&quot;sources&quot;</span>: &#123;<span class="string">&quot;SimpleStorage.sol&quot;</span>: &#123;<span class="string">&quot;content&quot;</span>: simple_storage_file&#125;&#125;,</span><br><span class="line">        <span class="string">&quot;settings&quot;</span>: &#123;</span><br><span class="line">            <span class="string">&quot;outputSelection&quot;</span>: &#123;</span><br><span class="line">                <span class="string">&quot;*&quot;</span>: &#123;</span><br><span class="line">                    <span class="string">&quot;*&quot;</span>: [<span class="string">&quot;abi&quot;</span>, <span class="string">&quot;metadata&quot;</span>, <span class="string">&quot;evm.bytecode&quot;</span>, <span class="string">&quot;evm.bytecode.sourceMap&quot;</span>]</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    solc_version=<span class="string">&quot;0.6.0&quot;</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p> brownie 太墨迹，之前有用过hardhat,但是没深入使用，转hardhat!</p>
+
         </div>
 
         
@@ -204,13 +206,13 @@ pip install py-solc-x
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2022/05/31/python%E5%BC%80%E5%8F%91%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B9%8B%E5%85%AD-tokenstandards/"
+                           href="/2022/06/07/%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90css%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%B8%80/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">python开发区块链之六-tokenstandards</span>
+                                <span class="post-nav-title-item">深入解析css读书笔记一</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                         </a>
@@ -220,10 +222,10 @@ pip install py-solc-x
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/05/26/python%E5%BC%80%E5%8F%91%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B9%8B%E4%B8%89-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/"
+                           href="/2022/05/31/python%E5%BC%80%E5%8F%91%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B9%8B%E5%85%AD-tokenstandards/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">python开发区块链之三-基础概念</span>
+                                <span class="post-nav-title-item">python开发区块链之六-tokenstandards</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
