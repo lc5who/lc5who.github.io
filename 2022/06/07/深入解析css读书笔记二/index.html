@@ -9,7 +9,7 @@
     
     <title>
         
-            深入解析css读书笔记一 |
+            深入解析css读书笔记二 |
         
         Lcc&#39;s blog
     </title>
@@ -131,7 +131,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">深入解析css读书笔记一</span>
+            <span class="title-hover-animation">深入解析css读书笔记二</span>
         </div>
 
         
@@ -150,8 +150,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-06-07 10:13:55</span>
-        <span class="mobile">2022-06-07 10:13</span>
+        <span class="pc">2022-06-07 11:21:51</span>
+        <span class="mobile">2022-06-07 11:21</span>
     </span>
     
     
@@ -179,37 +179,38 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="Chapter-1-层叠·优先级·继承"><a href="#Chapter-1-层叠·优先级·继承" class="headerlink" title="Chapter 1. 层叠·优先级·继承"></a>Chapter 1. 层叠·优先级·继承</h1><h2 id="层叠"><a href="#层叠" class="headerlink" title="层叠"></a>层叠</h2><h3 id="1-样式表的来源：样式是从哪里来的，包括你的样式和浏览器默认样式等。"><a href="#1-样式表的来源：样式是从哪里来的，包括你的样式和浏览器默认样式等。" class="headerlink" title="1. 样式表的来源：样式是从哪里来的，包括你的样式和浏览器默认样式等。"></a>1. 样式表的来源：样式是从哪里来的，包括你的样式和浏览器默认样式等。</h3><ul>
-<li>作者样式表 </li>
-<li>用户代理样式表(浏览器自带)</li>
-</ul>
-<h3 id="2-选择器优先级：哪些选择器比另一些选择器更重要。"><a href="#2-选择器优先级：哪些选择器比另一些选择器更重要。" class="headerlink" title="2. 选择器优先级：哪些选择器比另一些选择器更重要。"></a>2. 选择器优先级：哪些选择器比另一些选择器更重要。</h3><p><img src="https://s3.bmp.ovh/imgs/2022/06/07/ce80dbac74903d7e.png"></p>
-<pre><code>简单说: id&gt;类&gt;标签  且选择器越多越精准那么优先级就越高.
-</code></pre>
-<p>0,0,0,0  -&gt;  id,class,tag,important  其中important的优先级最高</p>
-<h3 id="3-源码顺序：样式在样式表里的声明顺序。"><a href="#3-源码顺序：样式在样式表里的声明顺序。" class="headerlink" title="3. 源码顺序：样式在样式表里的声明顺序。"></a>3. 源码顺序：样式在样式表里的声明顺序。</h3><pre><code>书写顺序之所以很重要，是因为层叠。优先级相同时，后出现的样式会覆盖先出现的样式
-</code></pre>
-<h3 id="两条经验法则"><a href="#两条经验法则" class="headerlink" title="两条经验法则"></a>两条经验法则</h3><pre><code>(1) 在选择器中不要使用ID。就算只用一个ID，也会大幅提升优先级。当需要覆盖这个选择器时，通常找不到另一个有意义的ID，于是就会复制原来的选择器，然后加上另一个类，让它区别于想要覆盖的选择器。
-(2) 不要使用!important。它比ID更难覆盖，一旦用了它，想要覆盖原先的声明，就需要再加上一个!important，而且依然要处理优先级的问题。
-这两条规则是很好的建议，但不必固守它们，因为也有例外。不要为了赢得优先级竞赛而习惯性地使用这两个方法。
-</code></pre>
-<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><pre><code>    如果一个元素的某个属性没有层叠值，则可能会继承某个祖先元素的值。比如通常会给&lt;body&gt;元素加上font-family，里面的所有祖先元素都会继承这个字体，就不必给页面的每个元素明确指定字体了。
-不是所有的属性都能被继承。默认情况下，只有特定的一些属性能被继承，通常是我们希望被继承的那些。它们主要是跟文本相关的属性：color、font、font-family、font-size、font-weight、font-variant、font-style、line-height、letter-spacing、text-align、text-indent、text-transform、white-space以及word-spacing。
-    还有一些其他的属性也可以被继承，比如列表属性：list-style、list-style-type、list-style-position以及list-style-image。表格的边框属性border-collapse和border-spacing也能被继承。注意，这些属性控制的是表格的边框行为，而不是常用于指定非表格元素边框的属性。（恐怕没人希望将一个&lt;div&gt;的边框传递到每一个后代元素。）以上为不完全枚举，但是已经很详尽了。
-我们可以在适当的场景使用继承。比如给body元素应用字体，让后代元素继承该字体
-</code></pre>
-<p><img src="https://s3.bmp.ovh/imgs/2022/06/07/19db97a13177d8bb.png"></p>
-<h3 id="inherit-amp-amp-initial"><a href="#inherit-amp-amp-initial" class="headerlink" title="inherit &amp;&amp;  initial"></a>inherit &amp;&amp;  initial</h3><ul>
-<li>inherit =  继承父级元素的该层叠值</li>
-<li>initial =  声明的默认值 如 width = initial = auto</li>
-</ul>
-<h2 id="简写属性"><a href="#简写属性" class="headerlink" title="简写属性"></a>简写属性</h2><blockquote>
-<p>是用于同时给多个属性赋值的属性。比如font是一个简写属性，可以用于设置多种字体属性。它指定了font-style、font-weight、font-size、font-height以及font-family。</p>
+            <h1 id="Chapter-2-相对单位"><a href="#Chapter-2-相对单位" class="headerlink" title="Chapter 2. 相对单位"></a>Chapter 2. 相对单位</h1><h2 id="em"><a href="#em" class="headerlink" title="em"></a>em</h2><blockquote>
+<p>em是最常见的相对长度单位，适合基于特定的字号进行排版。在CSS中，1em等于当前元素的字号，其准确值取决于作用的元素</p>
 </blockquote>
-<pre><code>大多数简写属性可以省略一些值，只指定我们关注的值。但是要知道，这样做仍然会设置省略的值，即它们会被隐式地设置为初始值。这会默默覆盖在其他地方定义的样式。比如，如果给网页标题使用简写属性font时，省略font-weight，那么字体粗细就会被设置为normal
+<pre><code>浏览器会根据相对单位的值计算出绝对值，称作计算值（computed value）。
+在本例中，设置内边距为2em，会产生一个32px的计算值。如果另一个选择器也命中了相同的元素，并修改了字号，那么就会改变em的局部含义，计算出来的内边距也会随之变化。
+当设置padding、height、width、border-radius等属性时，使用em会很方便。这是因为当元素继承了不同的字号，或者用户改变了字体设置时，这些属性会跟着元素均匀地缩放。
 </code></pre>
-<h3 id="简写属性的顺序"><a href="#简写属性的顺序" class="headerlink" title="简写属性的顺序"></a>简写属性的顺序</h3><pre><code>简写属性会尽量包容指定的属性值的顺序。可以设置border: 1px solid black或者border: black 1px solid，两者都会生效。这是因为浏览器知道宽度、颜色、边框样式分别对应什么类型的值。
-有些特殊的如 padding margin  记忆口诀 TRouBLe  top -&gt;right -&gt;bottom-&gt;left
+<ul>
+<li>谈到font-size属性时，em表现得不太一样。之前提到过，当前元素的字号决定了em。但是，如果声明font-size: 1.2em，会发生什么呢？一个字号当然不能等于自己的1.2倍。实际上，这个font-size是根据继承的字号来计算的。</li>
+</ul>
+<h2 id="rem"><a href="#rem" class="headerlink" title="rem"></a>rem</h2><blockquote>
+<p>rem是root em的缩写。rem不是相对于当前元素，而是相对于根元素的单位。不管在文档的什么位置使用rem，1.2rem都会有相同的计算值：1.2乘以根元素的字号</p>
+</blockquote>
+<pre><code>一般会用rem设置字号，用px设置边框，用em设置其他大部分属性，尤其是内边距、外边距和圆角（不过我有时用百分比设置容器宽度）
+</code></pre>
+<h2 id="视口相对单位"><a href="#视口相对单位" class="headerlink" title="视口相对单位"></a>视口相对单位</h2><blockquote>
+<p>相对于浏览器视口定义长度的视口的相对单位。</p>
+</blockquote>
+<pre><code>vh：视口高度的1/100。
+vw：视口宽度的1/100。
+vmin：视口宽、高中较小的一方的1/100（IE9中叫vm，而不是vmin）。
+vmax：视口宽、高中较大的一方的1/100（本书写作时IE和Edge均不支持vmax）2。
+
+相对视口单位有一个不起眼的用途，就是设置字号，但我发现它比用vh和vw设置元素的宽和高还要实用。
+如果给一个元素加上font-size: 2vw会发生什么？在一个1200px的桌面显示器上，计算值为24px（1200的2%）。在一个768px宽的平板上，计算值约为15px（768的2%）。这样做的好处在于元素能够在这两种大小之间平滑地过渡，这意味着不会在某个断点突然改变。当视口大小改变时，元素会逐渐过渡。
+</code></pre>
+<blockquote>
+<p>当一个元素的值定义为长度（px、em、rem，等等）时，子元素会继承它的计算值。当使用em等单位定义行高时，它们的值是计算值，传递到了任何继承子元素上。如果子元素有不同的字号，并且继承了line-height属性，就会造成意想不到的结果，比如文字重叠。</p>
+</blockquote>
+<h2 id="自定义属性"><a href="#自定义属性" class="headerlink" title="自定义属性"></a>自定义属性</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span>&#123;</span><br><span class="line">    <span class="attr">--main-font</span>: Helvetica, Arial, sans-serif;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">p</span> &#123;                （以下<span class="number">3</span>行）将段落的字体设置为Helvetica、Arial、sans-serif</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="built_in">var</span>(--main-font);   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>--main-font 是自定义属性  使用时可以 var(--main-font)
+var(--main-font,sans-serif) 第二个参数是默认值,当第一个参数为无效值时
 </code></pre>
 
         </div>
@@ -229,29 +230,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/06/07/%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90css%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%BA%8C/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">深入解析css读书笔记二</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/06/02/%E8%AE%B0%E4%B8%80%E6%AC%A1react%E4%B8%8Ecordova%E5%85%BC%E5%AE%B9/"
+                           href="/2022/06/07/%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90css%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%B8%80/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">记一次react与cordova兼容</span>
+                                <span class="post-nav-title-item">深入解析css读书笔记一</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
